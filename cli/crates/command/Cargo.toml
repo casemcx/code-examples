@@ -1,0 +1,12 @@
+[package]
+name = "command"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+colored = { workspace = true }
+dialoguer ={ workspace = true }
+fs_extra = { workspace = true }
+
+common ={ path = "../common"}
+utils = { path = "../utils"}

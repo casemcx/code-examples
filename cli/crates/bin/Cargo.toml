@@ -1,0 +1,11 @@
+[package]
+name = "scaffold"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+clap = { workspace = true}
+colored ={ workspace = true }
+common ={ path = "../common" }
+cli = { path = "../cli"}
+command = { path = "../command"}
