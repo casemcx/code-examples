@@ -25,62 +25,37 @@ pub enum Template {
     Express(TemplateInfo),
 }
 
+/// 简化模板创建的宏
+macro_rules! template {
+    ($variant:ident, $name:expr, $desc:expr, $type:ident, $path:expr) => {
+        Template::$variant(TemplateInfo {
+            name: $name.to_string(),
+            description: $desc.to_string(),
+            template_type: TemplateType::$type,
+            path: format!("templates/{}", $path),
+        })
+    };
+}
+
 impl Template {
     /// 获取所有模板类型（用于列表展示）
     pub fn all() -> Vec<Template> {
         vec![
             // React 模板
-            Template::React(TemplateInfo {
-                name: "React".to_string(),
-                description: "React Monorepo 基座".to_string(),
-                template_type: TemplateType::Monorepo,
-                path: "templates/react/monorepo".to_string(),
-            }),
-            Template::React(TemplateInfo {
-                name: "React".to_string(),
-                description: "React 单体项目".to_string(),
-                template_type: TemplateType::Standalone,
-                path: "templates/react/standalone".to_string(),
-            }),
-            Template::React(TemplateInfo {
-                name: "React".to_string(),
-                description: "React 应用模板".to_string(),
-                template_type: TemplateType::App,
-                path: "templates/react/app".to_string(),
-            }),
+            template!(React, "React", "React Monorepo 基座", Monorepo, "react/monorepo"),
+            template!(React, "React", "React 单体项目", Standalone, "react/standalone"),
+            template!(React, "React", "React 应用模板", App, "react/app"),
+
             // Vue 模板
-            Template::Vue(TemplateInfo {
-                name: "Vue".to_string(),
-                description: "Vue Monorepo 基座".to_string(),
-                template_type: TemplateType::Monorepo,
-                path: "templates/vue/monorepo".to_string(),
-            }),
-            Template::Vue(TemplateInfo {
-                name: "Vue".to_string(),
-                description: "Vue 单体项目".to_string(),
-                template_type: TemplateType::Standalone,
-                path: "templates/vue/standalone".to_string(),
-            }),
-            Template::Vue(TemplateInfo {
-                name: "Vue".to_string(),
-                description: "Vue 应用模板".to_string(),
-                template_type: TemplateType::App,
-                path: "templates/vue/app".to_string(),
-            }),
+            template!(Vue, "Vue", "Vue Monorepo 基座", Monorepo, "vue/monorepo"),
+            template!(Vue, "Vue", "Vue 单体项目", Standalone, "vue/standalone"),
+            template!(Vue, "Vue", "Vue 应用模板", App, "vue/app"),
+
             // Nest 模板
-            Template::Nest(TemplateInfo {
-                name: "Nest".to_string(),
-                description: "NestJS 单体项目".to_string(),
-                template_type: TemplateType::Standalone,
-                path: "templates/nest/standalone".to_string(),
-            }),
+            template!(Nest, "Nest", "NestJS 单体项目", Standalone, "nest/standalone"),
+
             // Express 模板
-            Template::Express(TemplateInfo {
-                name: "Express".to_string(),
-                description: "Express 单体项目".to_string(),
-                template_type: TemplateType::Standalone,
-                path: "templates/express/standalone".to_string(),
-            }),
+            template!(Express, "Express", "Express 单体项目", Standalone, "express/standalone"),
         ]
     }
 
