@@ -2,10 +2,10 @@ use colored::*;
 use common::template::Template;
 use utils::{copy, print};
 
-mod command;
-mod service;
+mod prompts;
+mod handler;
 
-use service::{get_framework_name, get_project_name};
+use handler::{get_framework_name, get_project_name};
 
 /// 初始化新项目
 pub fn init_project(name: Option<String>, template_name: String) {
@@ -18,7 +18,7 @@ pub fn init_project(name: Option<String>, template_name: String) {
 
     // 2. 获取框架名称
     let framework = if template_name.is_empty() {
-        command::select_framework()
+        prompts::select_framework()
     } else {
         get_framework_name(template_name)
     };
@@ -26,7 +26,7 @@ pub fn init_project(name: Option<String>, template_name: String) {
 
     // 3. 询问是否使用 monorepo
     let use_monorepo = if Template::supports_monorepo(&framework) {
-        command::ask_use_monorepo()
+        prompts::ask_use_monorepo()
     } else {
         println!("⚠ {} 暂不支持 monorepo 模式，将创建单体项目", framework.yellow());
         false
@@ -59,12 +59,12 @@ fn create_monorepo_project(project_name: &str, framework: &str) {
             println!();
 
             // 询问是否创建初始应用
-            let create_app = command::ask_create_initial_app();
+            let create_app = prompts::ask_create_initial_app();
             if create_app {
                 println!();
-                let app_name = command::get_app_name();
+                let app_name = prompts::get_app_name();
                 println!();
-                let workspace = command::get_workspace_name();
+                let workspace = prompts::get_workspace_name();
                 println!();
 
                 // 创建子应用

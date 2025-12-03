@@ -7,5 +7,5 @@ edition = "2021"
 clap = { workspace = true}
 colored ={ workspace = true }
 common ={ path = "../common" }
-cli = { path = "../cli"}
-command = { path = "../command"}
+args = { path = "../args"}
+commands = { path = "../commands"}

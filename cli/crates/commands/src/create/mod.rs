@@ -2,10 +2,10 @@ use colored::*;
 use common::template::Template;
 use utils::{copy, monorepo, print};
 
-mod command;
-mod service;
+mod prompts;
+mod handler;
 
-use service::{get_app_name, get_framework_name, get_workspace};
+use handler::{get_app_name, get_framework_name, get_workspace};
 
 /// 在 monorepo 中创建新的子项目
 pub fn create_sub_project(
@@ -36,7 +36,7 @@ pub fn create_sub_project(
 
     // 4. 获取框架
     let framework = if template_name.is_empty() {
-        command::select_framework()
+        prompts::select_framework()
     } else {
         get_framework_name(template_name)
     };

@@ -1,7 +1,7 @@
 use clap::Parser;
 
-use cli::command::cli::{Cli, Commands};
-use command::{create::create_sub_project, init::init_project, list::list_project};
+use args::command::cli::{Cli, Commands};
+use commands::{create::create_sub_project, init::init_project, list::list_project};
 
 fn main() {
     let app = Cli::parse();
