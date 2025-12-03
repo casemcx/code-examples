@@ -1,0 +1,2 @@
+我期望你能重构我的项目，我希望把create拆分城init和create
+在init，要可以选择monorepo，如果使用monorepo，直接使用仓库，如果不是，则使用create，要处理前置配置的处理可以改一下
