@@ -1,0 +1,15 @@
+[package]
+name = "scaffold"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+clap = { workspace = true }
+dialoguer = { workspace = true }
+handlebars = { workspace = true }
+fs_extra = { workspace = true }
+walkdir = { workspace = true }
+colored = { workspace = true }
+anyhow = { workspace = true }
+thiserror = { workspace = true }
+lazy_static = { workspace = true }
