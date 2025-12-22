@@ -13,3 +13,4 @@ colored = { workspace = true }
 anyhow = { workspace = true }
 thiserror = { workspace = true }
 lazy_static = { workspace = true }
+commands={ path = "../commands"}
